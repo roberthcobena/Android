@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Bundle;;
+import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -12,7 +14,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private WebView browser;
-    String url = "https://www.kimsacorp.com.ec/prueba/";
+    String url = "https://www.kimsacorp.com.ec/prueba/app/";
     String url_error = "file:///android_asset/error.html";
 
     @Override
@@ -27,11 +29,14 @@ public class MainActivity extends AppCompatActivity {
 
         //setea title
         MainActivity.this.setTitle("Artes y Servicios SAOA");
+
         //define navegador interno
         browser = (WebView)findViewById(R.id.Idvisorweb);
+        WebSettings webSettings = browser.getSettings();
+        //browser.setVisibility(View.GONE);
 
-        //habilitamos javascript y el zoom
-        browser.getSettings().setJavaScriptEnabled(true);
+        //habilitamos javascript
+        webSettings.setJavaScriptEnabled(true);
 
         browser.loadUrl(url);
 
